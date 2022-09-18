@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flab.SSF.Community.Mapper.MemberMapper">
+
+    <select id="insert" resultType="flab.SSF.Community.domain.Member">
+        INSERT INTO member(id,Uid,pw,email,phone,grade,date,address,name,role,enabled )
+        values (#{member.getId()},#{member.getUid()},#{member.getPw()},#{member.getEmail()},#{member.getPhone()},
+                #{member.getGrade()},#{member.getDate()},#{member.getAddress()},#{member.getName()},#{member.getRole()}
+                ,#{member.getEnabled()})
+
+    </select>
+    <select id="update" resultType="flab.SSF.Community.domain.Member">
+        UPDATE member SET 칼럼명=변경할값,칼럼명=변경할값 WHERE id=#{id}
+    </select>
+    <select id="delete" resultType="flab.SSF.Community.domain.Member">
+        DELETE FROM member WHERE;
+    </select>
+    <select id="findAll" resultType="flab.SSF.Community.domain.Member">
+        select * from member;
+    </select>
+    <select id="findById" resultType="flab.SSF.Community.domain.Member">
+        select * from member;
+    </select>
+    <select id="findByEmail" resultType="flab.SSF.Community.domain.Member">
+        select * from member;
+    </select>
+
+
+</mapper>
