@@ -5,28 +5,32 @@
 
 <mapper namespace="flab.SSF.Community.Mapper.MemberMapper">
 
-    <select id="insert" resultType="flab.SSF.Community.domain.Member">
-        INSERT INTO member(id,Uid,pw,email,phone,grade,date,address,name,role,enabled )
-        values (#{member.getId()},#{member.getUid()},#{member.getPw()},#{member.getEmail()},#{member.getPhone()},
-                #{member.getGrade()},#{member.getDate()},#{member.getAddress()},#{member.getName()},#{member.getRole()}
-                ,#{member.getEnabled()})
-
-    </select>
-    <select id="update" resultType="flab.SSF.Community.domain.Member">
-        UPDATE member SET 칼럼명=변경할값,칼럼명=변경할값 WHERE id=#{id}
-    </select>
-    <select id="delete" resultType="flab.SSF.Community.domain.Member">
-        DELETE FROM member WHERE;
-    </select>
-    <select id="findAll" resultType="flab.SSF.Community.domain.Member">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member(uid,pw,email,phone,grade,address,name,role,enabled,date)
+        values (#{uid},#{pw},#{email},#{phone},
+                #{grade},#{address},#{name},#{role}
+                ,#{enabled},#{date});
+    </insert>
+    <update id="update">
+        UPDATE member SET pw=#{dpw} WHERE uid=#{member.uid};
+    </update>
+    <delete id="delete">
+        DELETE FROM member WHERE uid=#{uid};
+    </delete>
+    <select id="findAll"  resultType="flab.SSF.Community.domain.Member">
         select * from member;
     </select>
-    <select id="findById" resultType="flab.SSF.Community.domain.Member">
-        select * from member;
+    <select id="findById" parameterType="String" resultType="flab.SSF.Community.domain.Member">
+        select * from member WHERE uid=#{uid};
     </select>
-    <select id="findByEmail" resultType="flab.SSF.Community.domain.Member">
-        select * from member;
+    <select id="findByEmail" parameterType="String" resultType="flab.SSF.Community.domain.Member">
+        select * from member WHERE email=#{email};
     </select>
-
+    <select id="selectEnabled" resultType="flab.SSF.Community.domain.Member">
+        select * from member WHERE enabled='y';
+    </select>
+    <select id="login" resultType="flab.SSF.Community.domain.Member">
+        select * from member WHERE uid=#{uid} AND pw=${pw};
+    </select>
 
 </mapper>

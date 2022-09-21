@@ -42,7 +42,7 @@ public class MemberController {
 
         memberService.join(member);
 
-        return "redirect:/";
+        return "/home";
     }
 
     @GetMapping("/members")
@@ -75,7 +75,7 @@ public class MemberController {
     public String findPw(MemberForm memberForm) {
 
        memberService.findPassword(memberForm.getUid(),memberForm.getPw());
-       return "redirect:/";
+       return "/home";
     }
 
 }

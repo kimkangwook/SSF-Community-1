@@ -3,9 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <package name="flab.SSF.Community.domain"/>
+<!--        <package name="flab.SSF.Community.domain"/>-->
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mapper/memberMapper.xml"/>
+        <mapper resource="mybatis/mapper/boardMapper.xml"/>
     </mappers>
 </configuration>

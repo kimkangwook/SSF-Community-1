@@ -1,13 +1,8 @@
-package flab.SSF.Community.domain;
-
-import org.springframework.data.annotation.Id;
+package flab.SSF.Community.Controller;
 
 import java.util.Date;
 
-public class Board {
-
-    @Id
-    private Long id;
+public class BoardForm {
 
     private int no;
 
@@ -29,14 +24,6 @@ public class Board {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public int getNo() {
@@ -85,18 +72,5 @@ public class Board {
 
     public void setViews(int views) {
         this.views = views;
-    }
-
-    @Override
-    public String toString() {
-        return "Board{" +
-                "id=" + id +
-                ", no='" + no + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", date='" + date + '\'' +
-                ", category=" + category +
-                ", views=" + views +
-                '}';
     }
 }

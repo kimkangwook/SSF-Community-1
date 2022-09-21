@@ -1,12 +1,16 @@
 package flab.SSF.Community.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
+
 
 public class Member {
 
+    @Id
     private Long id;
 
-    private String Uid;
+    private String uid;
 
     private String pw;
 
@@ -33,11 +37,11 @@ public class Member {
     }
 
     public String getUid() {
-        return Uid;
+        return uid;
     }
 
-    public void setUid(String Uid) {
-        this.Uid = Uid;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getPw() {
@@ -110,5 +114,22 @@ public class Member {
 
     public void setEnabled(char enabled) {
         this.enabled = enabled;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
+                ", pw='" + pw + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", grade=" + grade +
+                ", date=" + date +
+                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                ", enabled=" + enabled +
+                '}';
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flab.SSF.Community.Mapper.BoardMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into board(no, title, content, date, category, views, uid)
+        values (#{no}, #{title}, #{content}, #{date}, #{category}, #{views}, #{uid});
+    </insert>
+    <update id="update">
+        update board
+        set title=#{title},
+            content=#{content}
+        where id=#{board.id};
+
+    </update>
+    <delete id="delete">
+        delete
+        from board
+        WHERE no =#{board.no};
+    </delete>
+    <select id="findAll" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board;
+    </select>
+    <select id="orderByViews" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board
+        ORDER BY views;
+    </select>
+    <select id="selectByUid" parameterType="String" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board
+        WHERE uid = #{uid};
+    </select>
+    <select id="selectByTitle" parameterType="String" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board
+        WHERE title = #{title};
+    </select>
+    <select id="selectByContent" parameterType="String" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board
+        WHERE content = #{content};
+    </select>
+    <select id="selectByCategory" parameterType="int" resultType="flab.SSF.Community.domain.Board">
+        select *
+        from board
+        WHERE category = #{category};
+    </select>
+
+</mapper>

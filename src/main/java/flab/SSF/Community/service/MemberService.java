@@ -68,9 +68,9 @@ public class MemberService {
     /**
      * 아이디로 비밀번호 찾기(새로운 비밀번호로 변경)
      */
-    public Member findPassword(String Uid, String pw) {
-        Member member=memberMapper.findById(Uid).orElseGet(()->{throw new IllegalStateException("등록되지 않은 회원입니다.");});
-        memberMapper.update(pw);
+    public Member findPassword(String uid, String pw) {
+        Member member=memberMapper.findById(uid).orElseGet(()->{throw new IllegalStateException("등록되지 않은 회원입니다.");});
+        memberMapper.update(member,pw);
         return member;
     }
 
@@ -82,7 +82,25 @@ public class MemberService {
         return memberMapper.findAll();
     }
 
+    /**
+     * 회원한명조회하기(uid로)
+     */
     public Optional<Member> findOne(String memberId) {
         return memberMapper.findById(memberId);
+    }
+
+
+    /**
+     * 로그인하기(해당 멤버객체 내뱉기)
+     */
+    public Optional<Member> login(String uid, String pw) {
+        return memberMapper.login(uid, pw);
+    }
+
+    /**
+     * 회원전체조회(탈퇴멤버 제외)
+     */
+    public List<Member> findMembersEnabled() {
+        return memberMapper.selectEnabled();
     }
 }
